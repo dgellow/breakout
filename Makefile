@@ -3,7 +3,7 @@ nimc     = nim c --lineDir:on --debugInfo --out:$(buildDir)
 
 .DEFAULT_GOAL := all
 
-all: clean breakout
+all: deps clean breakout
 
 breakout:
 	$(nimc)/breakout breakout.nim
@@ -11,3 +11,7 @@ breakout:
 clean:
 	rm -rf nimcache
 	rm -f $(buildDir)/*
+
+deps:
+	nimble update
+	nimble build
